@@ -1,4 +1,4 @@
-export PATH=$PATH:/usd/local/bin
+export PATH=$PATH:/usr/local/bin
 
 
 # Setting PATH for Python 3.4
