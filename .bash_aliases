@@ -1,0 +1,1 @@
+alias cdgit="cd ~/git"

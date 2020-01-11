@@ -1,0 +1,65 @@
+{
+  "editor.tabSize": 2,
+  "editor.rulers": [100],
+  "window.zoomLevel": 0,
+  "breadcrumbs.enabled": true,
+  "editor.detectIndentation": false,
+  "editor.largeFileOptimizations": false,
+  "python.formatting.provider": "black",
+  "zenMode.hideTabs": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.centerLayout": false,
+  "zenMode.fullScreen": false,
+  "workbench.editor.showTabs": true,
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#424242",
+    "titleBar.inactiveBackground": "#424242",
+    "titleBar.activeForeground": "#bdbdbd",
+    "titleBar.inactiveForeground": "#bdbdbd",
+    "statusBar.foreground": "#bdbdbd",
+    "statusBar.background" : "#bdbdbd",
+    "statusBar.noFolderBackground" : "#424242",
+    "statusBar.debuggingBackground": "#424242"
+  },
+  "python.linting.flake8Enabled": true,
+  "python.linting.mypyEnabled": true,
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.trimAutoWhitespace": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4
+  },
+  "[elixir]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.wordBasedSuggestions": false,
+    "editor.formatOnType": false,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.trimAutoWhitespace": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true
+  },
+  "go.formatTool": "goimports",
+  "go.useLanguageServer": true,
+  "[go]":  {
+    "editor.formatOnSave": false
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "punctuation.definition.constant.elixir",
+        "settings": {
+          "foreground": "#e0e0e0"
+        }
+      },
+      {
+        "scope": "constant.other.symbol.elixir",
+        "settings": {
+          "foreground": "#e0e0e0"
+        }
+      }
+    ]
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always"
+}
