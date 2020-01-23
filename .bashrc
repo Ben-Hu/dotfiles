@@ -123,6 +123,9 @@ fi
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
+# poetry
+. $HOME/.poetry/completions/poetry.bash
+
 # misc
 export LS_COLORS=$LS_COLORS:'ow=1;34:'
 export VISUAL=vim
