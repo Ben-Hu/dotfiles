@@ -139,3 +139,12 @@ eval "$(pyenv init -)"
 # gopath
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
+
+# direnv
+eval $(direnv hook bash)
+
+docker_clean() {
+  docker rm $(docker ps -f status=exited -a -q)
+  docker rmi -f $(docker images -f dangling=true -q)
+}
+

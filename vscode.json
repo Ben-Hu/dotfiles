@@ -21,19 +21,28 @@
     "statusBar.noFolderBackground" : "#424242",
     "statusBar.debuggingBackground": "#424242"
   },
+  "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
+  "python.sortImports.args":[
+    "-rc",
+    "-sp isort.cfg"
+  ],
   "[python]": {
     "editor.formatOnSave": true,
+    "editor.codeActionsOnSave":{
+      "source.organizeImports":true
+    },
     "editor.trimAutoWhitespace": true,
     "files.trimTrailingWhitespace": true,
     "editor.insertSpaces": true,
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
   },
   "[elixir]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
     "editor.wordBasedSuggestions": false,
+    "editor.formatOnSave": true,
     "editor.formatOnType": false,
     "editor.acceptSuggestionOnEnter": "on",
     "editor.trimAutoWhitespace": true,
@@ -43,7 +52,7 @@
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
   "[go]":  {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": true
   },
   "editor.tokenColorCustomizations": {
     "textMateRules": [
