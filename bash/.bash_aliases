@@ -9,7 +9,7 @@ fi
 
 # chromebook crouton shortcuts
 if [ ! -v $CHROMEBOOK ]; then
-  alias code="sudo startxiwi -n bionic -b code"
+  alias code="sudo startxiwi -n bionic code"
   alias bish="sudo enter-chroot -n bionic"
   alias bixi="sudo startxiwi -n bionic"
   alias biki="sudo unmount-chroot -f bionic"
