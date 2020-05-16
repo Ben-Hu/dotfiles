@@ -160,3 +160,7 @@ nnoremap <C-L> :nohl<CR><C-L>
 "------------------------------------------------------------
 set term=xterm
 filetype plugin indent on
+syntax on
+
+"hyper/#1037
+set t_RV=

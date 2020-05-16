@@ -1,0 +1,46 @@
+#!/bin/sh
+set -xe
+
+if [ -z $1 ]; then
+  echo "usage: $(basename $0) aws_profile"
+  exit 1
+fi
+
+PROFILE=$1
+
+log() { echo "\033[0;36m[$(basename $0)] $1\033[0m"; }
+
+list_instances() {
+  QUERY='.Reservations[].Instances[] | {id: .InstanceId, name: .Tags[] | select(.Key=="Name") | .Value} | [.id, .name] | @csv'
+  RESULTS=$(aws2 ec2 describe-instances --profile $PROFILE)
+  RC=$?
+
+  if [[ ! "$RC" -eq "0" ]]; then
+    return $RC
+  else
+    echo $RESULTS | jq -r "$QUERY" | sed s/\"//g | sed s/,/:/g
+    return $RC
+  fi
+}
+
+INSTANCES=$(list_instances)
+
+if [ ! "$?" -eq "0" ]; then
+  log "aws sso login required (check your browser)"
+  aws2 sso login --profile $PROFILE && INSTANCES=$(list_instances)
+
+  if [ ! "$?" -eq "0" ]; then
+    log "aws sso login failed"
+    exit 1
+  fi
+fi
+
+select INSTANCE in $INSTANCES; do
+  if [ -z $INSTANCE ]; then
+    log "invalid instance selection"
+  else
+    TARGET=$(echo $INSTANCE| cut -d : -f1)
+    log "selected instance: $INSTANCE"
+    aws2 ssm start-session --target $TARGET --profile $PROFILE && break;
+  fi
+done

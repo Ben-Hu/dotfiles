@@ -1,0 +1,5 @@
+#!/bin/sh
+set -xe
+
+docker rm $(docker ps -f status=exited -a -q)
+docker rmi -f $(docker images -f dangling=true -q)
