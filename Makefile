@@ -2,16 +2,21 @@ SHELL := /bin/bash
 
 DIR := $(shell pwd)
 
+ASDF_ROOT := ${HOME}/.asdf
+
 ERLANG_VER := 23.0
 ELIXIR_VER := 1.10.3-otp-23
 
 PYENV_ROOT := ${HOME}/.pyenv
 PYTHON_VER := 3.7.5
 
+NVM_ROOT := ${HOME}/.nvm
 NODE_VER := v14.2.0
 
+GVM_ROOT := ${HOME}/.gvm
 GO_VER := go1.14.3
 
+TERRAFORM_ROOT := ${HOME}/.terraform
 TERRAFORM_VER := 0.12.25
 
 init:
@@ -41,7 +46,14 @@ terraform:
 	curl -fLSs -o tf.zip \
 	https://releases.hashicorp.com/terraform/$(TERRAFORM_VER)/terraform_$(TERRAFORM_VER)_linux_amd64.zip
 	unzip tf.zip && rm tf.zip
-	mkdir -p ${HOME}/.terraform/bin && mv terraform ${HOME}/.terraform/bin
+	mkdir -p ${TERRAFORM_ROOT}/bin && mv terraform ${TERRAFORM_ROOT}/bin
+
+tfswitch:
+	curl -fLSs -o tfswitch.sh \
+	https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh
+	chmod u+x tfswitch.sh
+	./tfswitch.sh -b ${TERRAFORM_ROOT}/bin
+	rm ./tfswitch.sh
 
 circleci:
 	mkdir -p ${HOME}/.circleci/bin/
@@ -67,7 +79,7 @@ redis:
 	sudo service redis-server start
 
 asdf:
-	test -s ${HOME}/.asdf || git clone https://github.com/asdf-vm/asdf.git ${HOME}/.asdf
+	test -s $(ASDF_ROOT) || git clone https://github.com/asdf-vm/asdf.git $(ASDF_ROOT)
 
 asdf_erlang: asdf
 	asdf plugin-list | grep erlang > /dev/null ||  asdf plugin-add erlang
@@ -84,17 +96,17 @@ elixir: asdf_elixir erlang
 	asdf global elixir $(ELIXIR_VER)
 
 python:
-	test -s ${PYENV_ROOT} || git clone git@github.com:pyenv/pyenv.git ${PYENV_ROOT}
+	test -s $(PYENV_ROOT) || git clone git@github.com:pyenv/pyenv.git $(PYENV_ROOT)
 	pyenv install $(PYTHON_VER)
 	pyenv global $(PYTHON_VER)
 	pip install --user --upgrade pipenv poetry black flake8 isort mypy
 
 go:
-	test -s ${HOME}/.gvm || \
+	test -s $(GVM_ROOT) || \
 	curl -fLSs https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer | bash
 	gvm install $(GO_VER) -B
-	source ${HOME}/.gvm/scripts/gvm && gvm use ${GO_VER} --default
+	source $(GVM_ROOT)/scripts/gvm && gvm use $(GO_VER) --default
 
 node:
 	curl -fLSs https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-	. ${HOME}/.nvm/nvm.sh && nvm install $(NODE_VER) && nvm alias default $(NODE_VER)
+	. $(NVM_ROOT)/nvm.sh && nvm install $(NODE_VER) && nvm alias default $(NODE_VER)
