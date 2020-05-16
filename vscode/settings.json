@@ -1,51 +1,57 @@
 {
+  "breadcrumbs.enabled": true,
+  "editor.acceptSuggestionOnEnter":"on",
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "editor.largeFileOptimizations": false,
   "editor.tabSize": 2,
   "editor.rulers": [100],
-  "window.zoomLevel": 0,
-  "breadcrumbs.enabled": true,
-  "editor.detectIndentation": false,
-  "editor.largeFileOptimizations": false,
+  "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "window.zoomLevel": 0,
+  "window.menuBarVisibility": "compact",
+  "window.titleBarStyle": "custom",
+  "workbench.editor.showTabs": true,
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#424242",
+    "titleBar.inactiveBackground": "#424242",
+    "titleBar.activeForeground": "#bdbdbd",
+    "titleBar.inactiveForeground": "#bdbdbd",
+    "statusBar.foreground": "#bdbdbd",
+    "statusBar.background" : "#bdbdbd",
+    "statusBar.noFolderBackground" : "#424242",
+    "statusBar.debuggingBackground": "#424242"
+  },
   "zenMode.hideTabs": false,
   "zenMode.hideLineNumbers": false,
   "zenMode.centerLayout": false,
   "zenMode.fullScreen": false,
-  "workbench.editor.showTabs": true,
   "python.formatting.provider": "black",
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
-  "python.sortImports.args":[
-    "-rc",
-    "-sp isort.cfg"
-  ],
+  "python.sortImports.args":["-rc", "-sp isort.cfg"],
   "[python]": {
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave":{
       "source.organizeImports":true
     },
-    "editor.trimAutoWhitespace": true,
-    "files.trimTrailingWhitespace": true,
-    "editor.insertSpaces": true,
-    "editor.tabSize": 4,
+    "editor.tabSize": 4
   },
   "[elixir]": {
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2,
-    "editor.wordBasedSuggestions": false,
-    "editor.formatOnSave": true,
-    "editor.formatOnType": false,
-    "editor.acceptSuggestionOnEnter": "on",
-    "editor.trimAutoWhitespace": true,
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true
+    "editor.formatOnSave": true
   },
-  "go.goroot": "/home/ben/.gvm/gos/go1.14.3",
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
   "[go]":  {
-    "editor.formatOnSave": true,
-    "files.trimTrailingWhitespace": true
+    "editor.formatOnSave": true
   },
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.format.enable": true,
+  "javascript.autoClosingTags": true,
+  "javascript.format.semicolons": "insert",
+  "javascript.preferences.quoteStyle": "double",
+  "[javascript]": {
+    "editor.formatOnSave": true
+  }
 }
