@@ -6,3 +6,6 @@ IEx.configure(
     ls_directory: :light_cyan
   ]
 )
+
+now = fn -> DateTime.utc_now() end
+now_iso = fn -> DateTime.utc_now() |> DateTime.to_iso8601() end

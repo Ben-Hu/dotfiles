@@ -7,11 +7,21 @@ if [ -x /usr/bin/dircolors ]; then
   alias egrep='egrep --color=auto'
 fi
 
+# chromebook crouton shortcuts
+if [ ! -v $CHROMEBOOK ]; then
+  alias code="sudo startxiwi -n bionic -b code"
+  alias bish="sudo enter-chroot -n bionic"
+  alias bixi="sudo startxiwi -n bionic"
+  alias biki="sudo unmount-chroot -f bionic"
+fi
+
 # ls aliases
 alias la='ls -CaFlh'
 
 # misc
+alias g="git"
 alias cdgit="cd ~/git"
 alias cdbin="cd ~/bin"
 alias cdgo="cd $GOPATH"
 alias pg_init="sudo service postgresql start"
+alias redis_init="sudo service redis-server start"

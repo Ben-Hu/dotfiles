@@ -5,22 +5,13 @@
   "breadcrumbs.enabled": true,
   "editor.detectIndentation": false,
   "editor.largeFileOptimizations": false,
-  "python.formatting.provider": "black",
+  "files.trimTrailingWhitespace": true,
   "zenMode.hideTabs": false,
   "zenMode.hideLineNumbers": false,
   "zenMode.centerLayout": false,
   "zenMode.fullScreen": false,
   "workbench.editor.showTabs": true,
-  "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#424242",
-    "titleBar.inactiveBackground": "#424242",
-    "titleBar.activeForeground": "#bdbdbd",
-    "titleBar.inactiveForeground": "#bdbdbd",
-    "statusBar.foreground": "#bdbdbd",
-    "statusBar.background" : "#bdbdbd",
-    "statusBar.noFolderBackground" : "#424242",
-    "statusBar.debuggingBackground": "#424242"
-  },
+  "python.formatting.provider": "black",
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
@@ -49,26 +40,12 @@
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true
   },
+  "go.goroot": "/home/ben/.gvm/gos/go1.14.3",
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
   "[go]":  {
-    "editor.formatOnSave": true
-  },
-  "editor.tokenColorCustomizations": {
-    "textMateRules": [
-      {
-        "scope": "punctuation.definition.constant.elixir",
-        "settings": {
-          "foreground": "#e0e0e0"
-        }
-      },
-      {
-        "scope": "constant.other.symbol.elixir",
-        "settings": {
-          "foreground": "#e0e0e0"
-        }
-      }
-    ]
+    "editor.formatOnSave": true,
+    "files.trimTrailingWhitespace": true
   },
   "javascript.updateImportsOnFileMove.enabled": "always"
 }

@@ -79,35 +79,53 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# byobu
-[ -r /home/ben/.byobu/prompt ] && . /home/ben/.byobu/prompt   #byobu-prompt#
-
-# asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-
-# poetry
-. $HOME/.poetry/completions/poetry.bash
+# ssh
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+  eval "$(ssh-agent -s)"
+  ssh-add
+fi
 
 # misc
 export LS_COLORS=$LS_COLORS:'ow=1;34:'
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+# utilities
+export PATH="$HOME/.circleci/bin/:$PATH"
+export PATH="$HOME/.terraform/bin/:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$HOME/.bin/:$PATH"
+
+# erlang
+export ERL_AFLAGS="-kernel shell_history enabled shell_history_file_bytes 1024000"
+
+# byobu
+[ -r "$HOME/.byobu/prompt" ] && . "$HOME/.byobu/prompt"
+
+# asdf
+if [ -r $HOME/.asdf ]; then
+  . "$HOME/.asdf/asdf.sh"
+  . "$HOME/.asdf/completions/asdf.bash"
+fi
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if hash pyenv 2> /dev/null; then
+  eval "$(pyenv init -)"
+fi
 
-# gopath
+# go
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 # direnv
-eval $(direnv hook bash)
+if hash direnv 2> /dev/null; then
+  eval $(direnv hook bash)
+fi
 
-# erl/elixir
-export ERL_AFLAGS="-kernel shell_history enabled shell_history_file_bytes 1024000"
-
-# utility bin
-export PATH="$HOME/bin:$PATH"
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"

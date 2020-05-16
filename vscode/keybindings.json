@@ -1,0 +1,61 @@
+[
+	{
+		"key": "shift+alt+n",
+		"command": "quickNotes.toggle"
+	},
+	{
+		"key": "alt+`",
+		"command": "-quickNotes.toggle"
+	},
+	{
+		"key": "ctrl+shift+`",
+		"command": "workbench.action.terminal.toggleTerminal"
+	},
+	{
+		"key": "ctrl+shift+4",
+		"command": "workbench.action.terminal.new",
+		"when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "when": "terminalFocus"
+  },
+  {
+    "command": "workbench.action.terminal.split",
+    "key": "ctrl+shift+5",
+    "command": "-workbench.action.terminal.split",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "command": "workbench.action.terminal.split"
+  },
+  {
+    "key": "alt+s",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt+down",
+    "command": "-workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt+a",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt+up",
+    "command": "-workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "shift+alt+s",
+    "command": "workbench.action.terminal.focusNext"
+  },
+  {
+    "key": "shift+alt+a",
+    "command": "workbench.action.terminal.focusPrevious"
+  }
+]
