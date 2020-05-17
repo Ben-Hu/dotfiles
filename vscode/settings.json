@@ -41,10 +41,27 @@
   "[elixir]": {
     "editor.formatOnSave": true
   },
+  "go.goroot": "/home/ben/.gvm/gos/go1.14.3",
+  "go.gopath": "/home/ben/.gvm/pkgsets/go1.14.3/go_nub:/home/ben/.gvm/pkgsets/go1.14.3/global",
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
+  "go.lintTool": "golint",
+  "go.lintOnSave": "file",
   "[go]":  {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true,
+    },
+  },
+  "[go.mod]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true,
+    },
+  },
+  "gopls": {
+    "usePlaceholders": true,
+    "staticcheck": false,
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.format.enable": true,

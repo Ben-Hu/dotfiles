@@ -1,0 +1,18 @@
+\set QUIET 1
+
+\timing
+\x auto
+
+\set PROMPT1 '%033[1;32m%]%m%[%033[0m%]:%[%033[1;34m%][%/]%[%033[0m%] %033[1;33m%]>>>%[%033[0m%] '
+\set PROMPT2 '%033[1;33m%]>>>%[%033[0m%] '
+
+\set HISTFILE ~/.psql_history/ :DBNAME
+\set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper
+
+\set dbs 'SELECT pg_database.datname AS database, pg_size_pretty(pg_database_size(pg_database.datname)) AS size FROM pg_database ORDER BY size DESC;'
+
+\pset linestyle unicode
+\pset border 2
+
+\set QUIET 0

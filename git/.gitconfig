@@ -36,3 +36,5 @@
   l = log
 [credential]
   helper = cache
+[core]
+  excludesfile = ~/.gitignore

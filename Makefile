@@ -23,10 +23,11 @@ TERRAFORM_VER := 0.12.25
 init:
 	ln -fs $(DIR)/bash/.bashrc ${HOME}/.bashrc
 	ln -fs $(DIR)/bash/.bash_aliases ${HOME}/.bash_aliases
-	ln -fs $(DIR)/ssh/config ${HOME}/.ssh/config
 	ln -fs $(DIR)/vim/.vimrc ${HOME}/.vimrc
+	mkdir -p ~/.ssh/ && ln -fs $(DIR)/ssh/config ${HOME}/.ssh/config
 	ln -fs $(DIR)/git/.gitconfig ${HOME}/.gitconfig
 	ln -fs $(DIR)/git/.gitignore ${HOME}/.gitignore
+	mkdir -p ${HOME}/.psql_history && ln -fs $(DIR)/psql/.psqlrc ${HOME}/.psqlrc
 	ln -fs $(DIR)/iex/.iex.exs ${HOME}/.iex.exs
 	ln -fsT $(DIR)/bin ${HOME}/.bin
 
@@ -37,7 +38,7 @@ base:
 	libreadline-dev libsqlite3-dev wget curl llvm lldb libncurses5-dev libncursesw5-dev xz-utils \
 	tk-dev libffi-dev liblzma-dev python-openssl automake autoconf libyaml-dev libxslt-dev libtool \
 	unixodbc-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev xsltproc fop libxml2-utils \
-	default-jdk valgrind gdb wireshark tshark git unzip byobu direnv
+	default-jdk valgrind gdb wireshark tshark git unzip byobu direnv jq
 
 .PHONY: vscode
 vscode:
@@ -130,6 +131,9 @@ go:
 	curl -fLSs https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer | bash
 	gvm install $(GO_VER) -B
 	source $(GVM_ROOT)/scripts/gvm && gvm use $(GO_VER) --default
+	GO111MODULE=on go get -u -v golang.org/x/tools/cmd/goimports
+	GO111MODULE=on go get -u -v golang.org/x/tools/gopls@latest
+	GO111MODULE=on go get -u -v golang.org/x/lint/golint
 
 .PHONY: node
 node:

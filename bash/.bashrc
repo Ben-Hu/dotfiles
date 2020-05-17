@@ -46,10 +46,14 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+prompt_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/' -e 's/ //'
+}
+
 if [ "$color_prompt" = yes ]; then
-  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\h]\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]:\[\033[01;36m\]$(prompt_branch)\[\033[00m\] \[\033[01;33m\]>>>\[\033[00m\] '
 else
-  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+  PS1='${debian_chroot:+($debian_chroot)}[\h]:[\w]:$(prompt_branch) >>> '
 fi
 unset color_prompt force_color_prompt
 
@@ -116,8 +120,6 @@ if hash pyenv 2> /dev/null; then
 fi
 
 # go
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 # direnv
