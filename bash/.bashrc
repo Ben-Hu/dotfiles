@@ -103,9 +103,6 @@ export PATH="$HOME/.bin/:$PATH"
 # erlang
 export ERL_AFLAGS="-kernel shell_history enabled shell_history_file_bytes 1024000"
 
-# byobu
-[ -r "$HOME/.byobu/prompt" ] && . "$HOME/.byobu/prompt"
-
 # asdf
 if [ -r $HOME/.asdf ]; then
   . "$HOME/.asdf/asdf.sh"
