@@ -29,8 +29,8 @@
   rbi = rebase --interactive
   rbs = rebase --skip
   f = fetch
-  fo = fetch upstream
-  fu = fetch origin
+  fu = fetch upstream
+  fo = fetch origin
   po = push origin
   s = status
   l = log
@@ -38,3 +38,7 @@
   helper = cache
 [core]
   excludesfile = ~/.gitignore
+[push]
+  default = current
+[fetch]
+  default = current

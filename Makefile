@@ -31,6 +31,8 @@ init:
 	mkdir -p ${HOME}/.psql_history && ln -fs $(DIR)/psql/.psqlrc ${HOME}/.psqlrc
 	ln -fs $(DIR)/iex/.iex.exs ${HOME}/.iex.exs
 	ln -fsT $(DIR)/bin ${HOME}/.bin
+	curl -fLSs -o ${HOME}/.git-completion.bash \
+	https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
 .PHONY: base
 base:
