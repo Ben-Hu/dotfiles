@@ -20,11 +20,11 @@ alias la='ls -CaFlh'
 
 # misc
 alias g="git"
+alias s="screen"
 alias cdgit="cd ~/git"
 alias cdbin="cd ~/bin"
 alias cdgo="cd $GOPATH"
 alias pg_init="sudo service postgresql start"
 alias redis_init="sudo service redis-server start"
-alias screen_attach="screen -r"
-alias screen_list="screen -ls"
-alias screen_clean="screen -ls | grep Detached | cut -d. -f1 | awk '{print $1}' | xargs kill"
+alias fcode="fedit code"
+alias fvim="fedit vim"

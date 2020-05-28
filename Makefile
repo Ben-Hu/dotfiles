@@ -24,6 +24,7 @@ init:
 	ln -fs $(DIR)/bash/.bashrc ${HOME}/.bashrc
 	ln -fs $(DIR)/bash/.bash_aliases ${HOME}/.bash_aliases
 	ln -fs $(DIR)/vim/.vimrc ${HOME}/.vimrc
+	mkdir -p ~/.screen && chmod 700 ~/.screen
 	ln -fs $(DIR)/screen/.screenrc ${HOME}/.screenrc
 	mkdir -p ~/.ssh/ && ln -fs $(DIR)/ssh/config ${HOME}/.ssh/config
 	ln -fs $(DIR)/git/.gitconfig ${HOME}/.gitconfig
@@ -142,3 +143,8 @@ go:
 node:
 	curl -fLSs https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 	. $(NVM_ROOT)/nvm.sh && nvm install $(NODE_VER) && nvm alias default $(NODE_VER)
+
+.PHONY: fzf
+fzf:
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	~/.fzf/install

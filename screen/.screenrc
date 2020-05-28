@@ -8,6 +8,6 @@ vbell off
 
 altscreen on
 termcapinfo vt100 dl=5\E[M
-termcapinfo xterm*|linux*|rxvt*|Eterm* OP
+termcapinfo xterm*|linux*|rxvt*|Eterm* OP:te=\E[H\E[2J:ti=\E[H\E[2J:
 
 caption always "%{= w}%-w%{= gW}%n %t%{-}%+w %-= %l | %Y-%m-%d%c:%s"

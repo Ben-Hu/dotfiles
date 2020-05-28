@@ -70,9 +70,7 @@ esac
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # alias definitions.
-if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
-fi
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 # enable programmable completion features
 if ! shopt -oq posix; then
@@ -83,9 +81,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
+[ -f ~/.git-completion.bash ] && . ~/.git-completion.bash
 
 # ssh
 if [ -z "$SSH_AUTH_SOCK" ] ; then
@@ -103,6 +99,8 @@ export PATH="$HOME/.circleci/bin/:$PATH"
 export PATH="$HOME/.terraform/bin/:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/.bin/:$PATH"
+
+export SCREENDIR="$HOME/.screen"
 
 # erlang
 export ERL_AFLAGS="-kernel shell_history enabled shell_history_file_bytes 1024000"
@@ -133,8 +131,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 
-terraform()
-{
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+terraform() {
   if [ "$1" = "fmt" ]
   then
     shift
@@ -142,4 +141,55 @@ terraform()
   else
     command terraform "$@"
   fi
+}
+
+fedit() {
+  local editor target
+  editor=$1
+  target=$(
+    fzf --height 100% --layout reverse --info inline --border \
+    --preview 'head -100 {}' --preview-window right:100:border
+  ) || return
+  $editor $target
+}
+
+fco() {
+  local tags branches target
+  tags=$(git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
+  branches=$(
+    git branch --all | grep -v HEAD | sed "s/.* //" | sed "s#remotes/[^/]*/##" | sort -u |
+    awk '{print $1}'
+  ) || return
+  target=$(
+    (echo "$tags"; echo "$branches") | sed '/^$/d' |
+    fzf --border --no-hscroll --reverse --ansi +m -d "\t" -n 2 -q "$*"
+  ) || return
+  git ch $(echo "$target" | awk '{print $2}')
+}
+
+sls() {
+  local sessions target
+  sessions=$(screen -ls | grep '(Detached)') || return
+  sessions=$(echo "$sessions" | awk -F "(" '{print "(" $2 $1}') || return
+  target=$(echo "$sessions" | fzf --border) || return
+  screen -r $(echo "$target" | awk -F ")" '{print $2}')
+}
+
+srm() {
+  local sessions targets target
+  sessions=$(screen -ls | grep '(Detached)') || return
+  sessions=$(echo "$sessions" | awk -F "(" '{print "(" $2 $1}') || return
+  targets=$(echo "$sessions" | fzf --multi --border) || return
+  for target in $(echo "$targets" | awk -F ")" '{print $2}'); do
+    screen -XS $target quit
+  done
+}
+
+fgl() {
+  git rev-parse HEAD > /dev/null 2>&1 || return
+  git log --date=short \
+  --format="%C(blue)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
+  fzf --ansi --no-sort --reverse --multi --border \
+  --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | head -300' |
+  grep -o "[a-f0-9]\{7,\}"
 }
