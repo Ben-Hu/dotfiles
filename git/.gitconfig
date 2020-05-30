@@ -40,5 +40,3 @@
   excludesfile = ~/.gitignore
 [push]
   default = current
-[fetch]
-  default = current

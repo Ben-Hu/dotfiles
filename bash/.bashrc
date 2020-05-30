@@ -51,9 +51,9 @@ prompt_branch() {
 }
 
 if [ "$color_prompt" = yes ]; then
-  PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\h]\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]:\[\033[01;36m\]$(prompt_branch)\[\033[00m\] \[\033[01;33m\]>>>\[\033[00m\] '
+  PS1='\[\e]0;\u@\h: \w\a\]\[\033[01;32m\][\h-${debian_chroot:+$debian_chroot}]\[\033[00m\]:\[\033[01;34m\][\w]\[\033[00m\]:\[\033[01;36m\]$(prompt_branch)\[\033[00m\] \[\033[01;33m\]>>>\[\033[00m\] '
 else
-  PS1='${debian_chroot:+($debian_chroot)}[\h]:[\w]:$(prompt_branch) >>> '
+  PS1='[\h-${debian_chroot:+$debian_chroot}]:[\w]:$(prompt_branch) >>> '
 fi
 unset color_prompt force_color_prompt
 
@@ -143,6 +143,16 @@ terraform() {
   fi
 }
 
+git() {
+  if [ "$1" = "pou" ]
+  then
+    shift
+    command git push --set-upstream origin $(git symbolic-ref --short HEAD) "$@"
+  else
+    command git "$@"
+  fi
+}
+
 fedit() {
   local editor target
   editor=$1
@@ -154,17 +164,25 @@ fedit() {
 }
 
 fco() {
-  local tags branches target
-  tags=$(git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
+  local branches target
   branches=$(
-    git branch --all | grep -v HEAD | sed "s/.* //" | sed "s#remotes/[^/]*/##" | sort -u |
+    git branch | grep -v HEAD | sed "s/.* //" | sed "s#remotes/[^/]*/##" | sort -u |
     awk '{print $1}'
   ) || return
-  target=$(
-    (echo "$tags"; echo "$branches") | sed '/^$/d' |
-    fzf --border --no-hscroll --reverse --ansi +m -d "\t" -n 2 -q "$*"
+  target=$(echo "$branches" | fzf --border --no-hscroll --reverse --ansi +m -d "\t" -q "$*"
   ) || return
-  git ch $(echo "$target" | awk '{print $2}')
+  git ch $target
+}
+
+fbrd() {
+  local branches target
+  branches=$(
+    git branch | grep -v HEAD | sed "s/.* //" | sed "s#remotes/[^/]*/##" | sort -u |
+    awk '{print $1}'
+  ) || return
+  target=$(echo "$branches" | fzf --border --no-hscroll --reverse --ansi +m -d "\t" -q "$*"
+  ) || return
+  git branch -d $target
 }
 
 sls() {

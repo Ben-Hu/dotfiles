@@ -42,7 +42,7 @@ base:
 	libreadline-dev libsqlite3-dev wget curl llvm lldb libncurses5-dev libncursesw5-dev xz-utils \
 	tk-dev libffi-dev liblzma-dev python-openssl automake autoconf libyaml-dev libxslt-dev libtool \
 	unixodbc-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev xsltproc fop libxml2-utils \
-	default-jdk valgrind gdb wireshark tshark git unzip screen direnv jq
+	default-jdk valgrind gdb wireshark tshark git unzip screen direnv jq iperf
 
 .PHONY: vscode
 vscode:

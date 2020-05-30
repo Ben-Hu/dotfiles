@@ -16,7 +16,8 @@ if [ ! -v $CHROMEBOOK ]; then
 fi
 
 # ls aliases
-alias la='ls -CaFlh'
+alias ll='ls -CaFlh'
+alias la='ls -CaF'
 
 # misc
 alias g="git"
