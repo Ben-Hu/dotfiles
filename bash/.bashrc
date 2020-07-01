@@ -193,6 +193,13 @@ sls() {
   screen -r $(echo "$target" | awk -F ")" '{print $2}')
 }
 
+tls() {
+  local sessions target
+  sessions=$(tmux ls | grep -v '(attached)') || return
+  target=$(echo "$sessions" | fzf --border) || return
+  tmux a -t $(echo "$target" | awk -F ':' '{print $1}')
+}
+
 srm() {
   local sessions targets target
   sessions=$(screen -ls | grep '(Detached)') || return
@@ -200,6 +207,15 @@ srm() {
   targets=$(echo "$sessions" | fzf --multi --border) || return
   for target in $(echo "$targets" | awk -F ")" '{print $2}'); do
     screen -XS $target quit
+  done
+}
+
+trm() {
+  local sessions targets target
+  sessions=$(tmux ls | grep -v '(attached)') || return
+  targets=$(echo "$sessions" | fzf --multi --border) || return
+  for target in $(echo "$targets" | awk -F ":" '{print $1}'); do
+    tmux kill-ses -t $target
   done
 }
 

@@ -7,7 +7,8 @@ defscrollback 10000
 vbell off
 
 altscreen on
-termcapinfo vt100 dl=5\E[M
-termcapinfo xterm*|linux*|rxvt*|Eterm* OP:te=\E[H\E[2J:ti=\E[H\E[2J:
+termcapinfo xterm* ti@:te@
 
-caption always "%{= w}%-w%{= gW}%n %t%{-}%+w %-= %l | %Y-%m-%d%c:%s"
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{= w}%-w%{= gW}%n %t%{-}%+w %-= %l | %Y-%m-%d %c:%s"
