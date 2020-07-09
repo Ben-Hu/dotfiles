@@ -14,7 +14,7 @@ NVM_ROOT := ${HOME}/.nvm
 NODE_VER := v14.2.0
 
 GVM_ROOT := ${HOME}/.gvm
-GO_VER := go1.14.3
+GO_VER := go1.14.4
 
 TERRAFORM_ROOT := ${HOME}/.terraform
 TERRAFORM_VER := 0.12.25

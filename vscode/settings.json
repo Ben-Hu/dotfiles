@@ -1,6 +1,6 @@
 {
   "breadcrumbs.enabled": true,
-  "editor.acceptSuggestionOnEnter":"on",
+  "editor.acceptSuggestionOnEnter": "on",
   "editor.detectIndentation": false,
   "editor.insertSpaces": true,
   "editor.largeFileOptimizations": false,
@@ -19,8 +19,8 @@
     "titleBar.activeForeground": "#bdbdbd",
     "titleBar.inactiveForeground": "#bdbdbd",
     "statusBar.foreground": "#bdbdbd",
-    "statusBar.background" : "#bdbdbd",
-    "statusBar.noFolderBackground" : "#424242",
+    "statusBar.background": "#bdbdbd",
+    "statusBar.noFolderBackground": "#424242",
     "statusBar.debuggingBackground": "#424242"
   },
   "zenMode.hideTabs": false,
@@ -31,38 +31,38 @@
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
-  "python.sortImports.args":["-rc", "-sp isort.cfg"],
+  "python.sortImports.args": ["-rc", "-sp isort.cfg"],
   "[python]": {
     "editor.formatOnSave": true,
-    "editor.codeActionsOnSave":{
-      "source.organizeImports":true
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
     },
     "editor.tabSize": 4
   },
   "[elixir]": {
     "editor.formatOnSave": true
   },
-  "go.goroot": "/home/ben/.gvm/gos/go1.14.3",
-  "go.gopath": "/home/ben/.gvm/pkgsets/go1.14.3/go_nub:/home/ben/.gvm/pkgsets/go1.14.3/global",
+  "go.goroot": "/home/ben/.gvm/gos/go1.14.4",
+  "go.gopath": "/home/ben/.gvm/pkgsets/go1.14.4/global",
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
   "go.lintTool": "golint",
   "go.lintOnSave": "file",
-  "[go]":  {
+  "[go]": {
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true,
-    },
+      "source.organizeImports": true
+    }
   },
   "[go.mod]": {
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true,
-    },
+      "source.organizeImports": true
+    }
   },
   "gopls": {
     "usePlaceholders": true,
-    "staticcheck": false,
+    "staticcheck": false
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.format.enable": true,
