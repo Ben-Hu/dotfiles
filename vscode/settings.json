@@ -70,6 +70,19 @@
   "javascript.format.semicolons": "insert",
   "javascript.preferences.quoteStyle": "double",
   "[javascript]": {
-    "editor.formatOnSave": true
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[html]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    "*.layout.tmpl": "html",
+    "*.page.tmpl": "html",
+    "*.partial.tmpl": "html"
   }
 }
