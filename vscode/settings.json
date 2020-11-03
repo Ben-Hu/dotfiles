@@ -5,6 +5,7 @@
   "editor.insertSpaces": true,
   "editor.largeFileOptimizations": false,
   "editor.tabSize": 2,
+  "editor.formatOnSave": true,
   "editor.rulers": [100],
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
@@ -84,5 +85,6 @@
     "*.layout.tmpl": "html",
     "*.page.tmpl": "html",
     "*.partial.tmpl": "html"
-  }
+  },
+  "elixirLS.suggestSpecs": false
 }

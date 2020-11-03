@@ -5,7 +5,7 @@ DIR := $(shell pwd)
 ASDF_ROOT := ${HOME}/.asdf
 
 ERLANG_VER := 23.0
-ELIXIR_VER := 1.10.3-otp-23
+ELIXIR_VER := 1.11.1-otp-23
 
 PYENV_ROOT := ${HOME}/.pyenv
 PYTHON_VER := 3.7.5
@@ -14,10 +14,10 @@ NVM_ROOT := ${HOME}/.nvm
 NODE_VER := v14.2.0
 
 GVM_ROOT := ${HOME}/.gvm
-GO_VER := go1.14.4
+GO_VER := go1.15.3
 
 TERRAFORM_ROOT := ${HOME}/.terraform
-TERRAFORM_VER := 0.12.25
+TERRAFORM_VER := 0.13.5
 
 .PHONY: init
 init:
