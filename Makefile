@@ -4,20 +4,20 @@ DIR := $(shell pwd)
 
 ASDF_ROOT := ${HOME}/.asdf
 
-ERLANG_VER := 23.0
-ELIXIR_VER := 1.11.1-otp-23
+ERLANG_VER := 23.2.3
+ELIXIR_VER := 1.11.3-otp-23
 
 PYENV_ROOT := ${HOME}/.pyenv
-PYTHON_VER := 3.7.5
+PYTHON_VER := 3.9.1
 
 NVM_ROOT := ${HOME}/.nvm
-NODE_VER := v14.2.0
+NODE_VER := v14.15.4
 
 GVM_ROOT := ${HOME}/.gvm
-GO_VER := go1.15.3
+GO_VER := go1.15.7
 
 TERRAFORM_ROOT := ${HOME}/.terraform
-TERRAFORM_VER := 0.13.5
+TERRAFORM_VER := 0.14.5
 
 .PHONY: init
 init:
@@ -42,8 +42,8 @@ base:
 	sudo apt-get install -y build-essential libssl-dev libssh-dev zlib1g-dev libbz2-dev \
 	libreadline-dev libsqlite3-dev wget curl llvm lldb libncurses5-dev libncursesw5-dev xz-utils \
 	tk-dev libffi-dev liblzma-dev python-openssl automake autoconf libyaml-dev libxslt-dev libtool \
-	unixodbc-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev xsltproc fop libxml2-utils \
-	lzma default-jdk valgrind gdb wireshark tshark git unzip screen direnv jq iperf
+	unixodbc-dev libwxgtk3.0-gtk3-dev libgl1-mesa-dev libglu1-mesa-dev xsltproc fop libxml2-utils \
+	lzma bison python3-pip default-jdk valgrind gdb wireshark tshark git unzip screen direnv jq iperf
 
 .PHONY: vscode
 vscode:
@@ -73,6 +73,7 @@ tfswitch:
 	chmod u+x tfswitch.sh
 	./tfswitch.sh -b ${TERRAFORM_ROOT}/bin
 	rm ./tfswitch.sh
+	echo 'bin = "$$HOME/.terraform/bin/terraform"' > ${HOME}/.tfswitch.toml
 
 .PHONY: circleci
 circleci:
@@ -128,6 +129,7 @@ python:
 	test -s $(PYENV_ROOT) || git clone git@github.com:pyenv/pyenv.git $(PYENV_ROOT)
 	pyenv install $(PYTHON_VER)
 	pyenv global $(PYTHON_VER)
+	python -m pip install --upgrade pip
 	pip install --user --upgrade pipenv poetry black flake8 isort mypy
 
 .PHONY: go
@@ -142,7 +144,7 @@ go:
 
 .PHONY: node
 node:
-	curl -fLSs https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+	curl -fLSs https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 	. $(NVM_ROOT)/nvm.sh && nvm install $(NODE_VER) && nvm alias default $(NODE_VER)
 
 .PHONY: fzf
