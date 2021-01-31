@@ -6,9 +6,16 @@
   "editor.largeFileOptimizations": false,
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
-  "editor.rulers": [100],
+  "editor.rulers": [
+    100
+  ],
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "files.associations": {
+    "*.layout.tmpl": "html",
+    "*.page.tmpl": "html",
+    "*.partial.tmpl": "html"
+  },
   "search.useGlobalIgnoreFiles": true,
   "window.zoomLevel": 0,
   "window.menuBarVisibility": "compact",
@@ -32,7 +39,10 @@
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
-  "python.sortImports.args": ["-rc", "-sp isort.cfg"],
+  "python.sortImports.args": [
+    "-rc",
+    "-sp isort.cfg"
+  ],
   "[python]": {
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
@@ -43,6 +53,7 @@
   "[elixir]": {
     "editor.formatOnSave": true
   },
+  "elixirLS.suggestSpecs": false,
   "go.goroot": "/home/ben/.gvm/gos/go1.14.4",
   "go.gopath": "/home/ben/.gvm/pkgsets/go1.14.4/global",
   "go.formatTool": "goimports",
@@ -81,10 +92,5 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "files.associations": {
-    "*.layout.tmpl": "html",
-    "*.page.tmpl": "html",
-    "*.partial.tmpl": "html"
-  },
-  "elixirLS.suggestSpecs": false
+  "todo.file.name": ".vscode/TODO"
 }
