@@ -1,42 +1,53 @@
 [user]
-  email = benjqh@gmail.com
-  name = Ben-Hu
-  signingkey = 85BD7FC723660E0B
+email = benjqh@gmail.com
+name = Ben-Hu
+signingkey = 85BD7FC723660E0B
+
 [gpg]
-  program = gpg
+program = gpg
+
 [commit]
-  gpgsign = true
+gpgsign = true
+
 [color "branch"]
-  current = green bold
-  local = white bold
-  remote = cyan bold
+current = green bold
+local = white bold
+remote = cyan bold
+
 [color "status"]
-  added = green bold
-  changed = yellow bold
-  untracked = red bold
+added = green bold
+changed = yellow bold
+untracked = red bold
+
 [alias]
-  a = add
-  co = commit -S
-  coa = commit -S --amend
-  ch = checkout
-  chb = checkout -b
-  br = branch
-  brd = branch -d
-  brdd = branch -D
-  rb = rebase
-  rba = rebase --abort
-  rbc = rebase --continue
-  rbi = rebase --interactive
-  rbs = rebase --skip
-  f = fetch
-  fu = fetch upstream
-  fo = fetch origin
-  po = push origin
-  s = status
-  l = log
+a = add
+co = commit -S
+coa = commit -S --amend
+ch = checkout
+chb = checkout -b
+br = branch
+brd = branch -d
+brdd = branch -D
+rb = rebase
+rba = rebase --abort
+rbc = rebase --continue
+rbi = rebase --interactive
+rbs = rebase --skip
+f = fetch
+fu = fetch upstream
+fo = fetch origin
+po = push origin
+s = status
+l = log
+
 [credential]
-  helper = cache
+helper = cache
+
 [core]
-  excludesfile = ~/.gitignore
+excludesfile = ~/.gitignore
+
 [push]
-  default = current
+default = current
+
+[url "ssh://git@github.com/"]
+insteadOf = https://github.com/
