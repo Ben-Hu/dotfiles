@@ -17,7 +17,6 @@
     "*.partial.tmpl": "html"
   },
   "search.useGlobalIgnoreFiles": true,
-  "window.zoomLevel": 0,
   "window.menuBarVisibility": "compact",
   "window.titleBarStyle": "custom",
   "workbench.editor.showTabs": true,
@@ -39,10 +38,6 @@
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
-  "python.sortImports.args": [
-    "-rc",
-    "-sp isort.cfg"
-  ],
   "[python]": {
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
@@ -73,7 +68,7 @@
     }
   },
   "gopls": {
-    "usePlaceholders": true,
+    "usePlaceholders": false,
     "staticcheck": false
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
