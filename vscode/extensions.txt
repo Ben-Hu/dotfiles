@@ -21,4 +21,6 @@ ms-vscode.cpptools
 njpwerner.autodocstring
 pgourlain.erlang
 streetsidesoftware.code-spell-checker
+tht13.html-preview-vscode
+wingrunr21.vscode-ruby
 yzhang.markdown-all-in-one

@@ -69,7 +69,8 @@
   },
   "gopls": {
     "usePlaceholders": false,
-    "staticcheck": false
+    "staticcheck": false,
+    "experimentalWorkspaceModule": true,
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.format.enable": true,
@@ -87,5 +88,24 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "todo.file.name": ".vscode/TODO"
+  "todo.file.name": ".vscode/TODO",
+  "ruby.codeCompletion": "rcodetools",
+  "ruby.format": "rubocop",
+  "ruby.intellisense": "rubyLocate",
+  "ruby.lint": {
+    "ruby": {
+      "unicode": true
+    },
+    "reek": true,
+    "rubocop": {
+      "lint": true,
+      "rails": true
+    },
+    "fasterer": true,
+    "debride": {
+      "rails": true
+    },
+    "ruby-lint": true
+  },
+  "ruby.useLanguageServer": true,
 }

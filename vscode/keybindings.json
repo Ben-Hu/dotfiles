@@ -17,18 +17,9 @@
 		"when": "terminalFocus"
   },
   {
-    "key": "ctrl+shift+d",
-    "when": "terminalFocus"
-  },
-  {
-    "command": "workbench.action.terminal.split",
     "key": "ctrl+shift+5",
-    "command": "-workbench.action.terminal.split",
+    "command": "workbench.action.terminal.split",
     "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+shift+d",
-    "command": "workbench.action.terminal.split"
   },
   {
     "key": "alt+s",
@@ -37,7 +28,7 @@
   },
   {
     "key": "alt+down",
-    "command": "-workbench.action.terminal.focusNextPane",
+    "command": "workbench.action.terminal.focusNextPane",
     "when": "terminalFocus"
   },
   {
@@ -47,7 +38,7 @@
   },
   {
     "key": "alt+up",
-    "command": "-workbench.action.terminal.focusPreviousPane",
+    "command": "workbench.action.terminal.focusPreviousPane",
     "when": "terminalFocus"
   },
   {

@@ -19,6 +19,8 @@ GO_VER := go1.17.2
 TERRAFORM_ROOT := ${HOME}/.terraform
 TERRAFORM_VER := 1.0.10
 
+RUBY_VER := 3.0.2
+
 .PHONY: init
 init:
 	ln -fs $(DIR)/bash/.bashrc ${HOME}/.bashrc
@@ -43,7 +45,8 @@ base:
 	libreadline-dev libsqlite3-dev wget curl llvm lldb libncurses5-dev libncursesw5-dev xz-utils \
 	tk-dev libffi-dev liblzma-dev python-openssl automake autoconf libyaml-dev libxslt-dev libtool \
 	unixodbc-dev libwxgtk3.0-gtk3-dev libgl1-mesa-dev libglu1-mesa-dev xsltproc fop libxml2-utils \
-	lzma bison python3-pip default-jdk valgrind gdb wireshark tshark git unzip screen direnv jq iperf
+	lzma bison python3-pip default-jdk valgrind gdb wireshark tshark git unzip screen direnv jq \
+	iperf net-tools
 
 .PHONY: vscode
 vscode:
@@ -114,6 +117,10 @@ asdf_erlang: asdf
 asdf_elixir: asdf
 	asdf plugin-list | grep elixir > /dev/null ||  asdf plugin-add elixir
 
+.PHONY: asdf_ruby
+asdf_ruby: asdf
+	asdf plugin-list | grep ruby > /dev/null || asdf plugin add ruby
+
 .PHONY: erlang
 erlang: asdf_erlang
 	asdf install erlang $(ERLANG_VER)
@@ -123,6 +130,11 @@ erlang: asdf_erlang
 elixir: asdf_elixir erlang
 	asdf install elixir $(ELIXIR_VER)
 	asdf global elixir $(ELIXIR_VER)
+
+.PHONY: ruby
+ruby: asdf_ruby
+	asdf install ruby $(RUBY_VER)
+	asdf global ruby $(RUBY_VER)
 
 .PHONY: python
 python:
