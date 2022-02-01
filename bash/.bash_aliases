@@ -18,6 +18,7 @@ fi
 # ls aliases
 alias ll='ls -CaFlh'
 alias la='ls -CaF'
+alias lp='stat -c "%a %n"'
 
 # misc
 alias g="git"

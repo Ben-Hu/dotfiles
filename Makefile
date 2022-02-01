@@ -1,25 +1,34 @@
+DEFAULT_GOAL := help
 SHELL := /bin/bash
 
 DIR := $(shell pwd)
 
 ASDF_ROOT := ${HOME}/.asdf
 
-ERLANG_VER := 24.1.3
-ELIXIR_VER := 1.12.3-otp-24
+ERLANG_VER := 24.2.1
+ELIXIR_VER := 1.13.2-otp-24
 
 PYENV_ROOT := ${HOME}/.pyenv
-PYTHON_VER := 3.9.2
+PYTHON_VER := 3.10.2
 
 NVM_ROOT := ${HOME}/.nvm
 NODE_VER := v16.13.0
 
 GVM_ROOT := ${HOME}/.gvm
-GO_VER := go1.17.2
+GO_VER := go1.17.6
 
 TERRAFORM_ROOT := ${HOME}/.terraform
-TERRAFORM_VER := 1.0.10
+TERRAFORM_VER := 1.1.4
 
 RUBY_VER := 3.0.2
+
+.PHONY: help
+help: ## Display this message
+	@echo "Usage: make [target]"
+	@echo
+	@echo "Available targets:"
+	@grep -h "##" $(MAKEFILE_LIST) | grep -v grep  | column -t -s '##'
+	@echo
 
 .PHONY: init
 init:
