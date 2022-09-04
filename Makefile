@@ -5,8 +5,8 @@ DIR := $(shell pwd)
 
 ASDF_ROOT := ${HOME}/.asdf
 
-ERLANG_VER := 24.2.1
-ELIXIR_VER := 1.13.2-otp-24
+ERLANG_VER := 25.0.4
+ELIXIR_VER := 1.14.0-otp-25
 
 PYENV_ROOT := ${HOME}/.pyenv
 PYTHON_VER := 3.10.2
@@ -15,10 +15,10 @@ NVM_ROOT := ${HOME}/.nvm
 NODE_VER := v16.13.0
 
 GVM_ROOT := ${HOME}/.gvm
-GO_VER := go1.17.6
+GO_VER := go1.19
 
 TERRAFORM_ROOT := ${HOME}/.terraform
-TERRAFORM_VER := 1.1.4
+TERRAFORM_VER := 1.2.8
 
 RUBY_VER := 3.0.2
 
@@ -55,7 +55,7 @@ base:
 	tk-dev libffi-dev liblzma-dev python-openssl automake autoconf libyaml-dev libxslt-dev libtool \
 	unixodbc-dev libwxgtk3.0-gtk3-dev libgl1-mesa-dev libglu1-mesa-dev xsltproc fop libxml2-utils \
 	lzma bison python3-pip default-jdk valgrind gdb wireshark tshark git unzip screen direnv jq \
-	iperf net-tools
+	iperf net-tools inotify-tools
 
 .PHONY: vscode
 vscode:
