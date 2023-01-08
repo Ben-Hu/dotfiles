@@ -61,7 +61,7 @@ base:
 vscode:
 	curl -fLSs -o vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868
 	sudo apt install ./vscode.deb && rm ./vscode.deb
-	cat vscode/extensions.txt  | xargs -L 1 code --install-extension
+	cat vscode/extensions.txt  | xargs -L 1 code --force --install-extension
 	ln -fs $(DIR)/vscode/settings.json ${HOME}/.config/Code/User/settings.json
 	ln -fs $(DIR)/vscode/keybindings.json ${HOME}/.config/Code/User/keybindings.json
 

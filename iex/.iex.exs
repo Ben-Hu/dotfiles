@@ -10,7 +10,7 @@ IEx.configure(
 now = fn -> DateTime.utc_now() end
 now_iso = fn -> DateTime.utc_now() |> DateTime.to_iso8601() end
 
-defmodule Deps do
+defmodule Dep do
   for {name, _ver} = dep <- [
         {:decimal, "~> 2.0"},
         {:uuid, "~> 1.1"},
@@ -23,6 +23,9 @@ defmodule Deps do
         {:observer_cli, "~> 1.7"},
         {:recon, "~> 2.5"}
       ] do
-    def unquote(name)(), do: Mix.install([unquote(dep)])
+    def unquote(name)(), do: unquote(dep)
+    def unquote(:"install_#{name}")(), do: install([unquote(dep)])
   end
+
+  def install(deps), do: deps |> List.wrap() |> Mix.install()
 end

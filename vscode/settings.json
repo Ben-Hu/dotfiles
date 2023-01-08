@@ -6,9 +6,7 @@
   "editor.largeFileOptimizations": false,
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
-  "editor.rulers": [
-    100
-  ],
+  "editor.rulers": [100],
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "files.associations": {
@@ -71,7 +69,7 @@
   "gopls": {
     "usePlaceholders": false,
     "staticcheck": false,
-    "experimentalWorkspaceModule": true,
+    "experimentalWorkspaceModule": true
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.format.enable": true,
