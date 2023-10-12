@@ -133,6 +133,10 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# postgres
+export PGUSER=postgres
+export PGDATABASE=postgres
+
 terraform() {
   if [ "$1" = "fmt" ]
   then

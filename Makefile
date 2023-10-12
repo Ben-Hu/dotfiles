@@ -5,22 +5,24 @@ DIR := $(shell pwd)
 
 ASDF_ROOT := ${HOME}/.asdf
 
-ERLANG_VER := 25.0.4
-ELIXIR_VER := 1.14.0-otp-25
+ERLANG_VER := 26.0.2
+ELIXIR_VER := 1.15.6-otp-26
 
 PYENV_ROOT := ${HOME}/.pyenv
-PYTHON_VER := 3.10.2
+PYTHON_VER := 3.11.6
 
 NVM_ROOT := ${HOME}/.nvm
-NODE_VER := v16.13.0
+NODE_VER := v18.18.1
 
 GVM_ROOT := ${HOME}/.gvm
-GO_VER := go1.19
+GO_VER := go1.21.3
 
 TERRAFORM_ROOT := ${HOME}/.terraform
-TERRAFORM_VER := 1.2.8
+TERRAFORM_VER := 1.6.1
 
 RUBY_VER := 3.0.2
+
+POSTGRES_VER := 16.0
 
 .PHONY: help
 help: ## Display this message
@@ -102,12 +104,6 @@ docker:
 	sudo systemctl enable docker.service
 	sudo systemctl start docker.service
 
-.PHONY: postgresql
-postgresql:
-	sudo apt-get update
-	sudo apt-get install -y postgresql postgresql-contrib
-	sudo service postgresql start
-
 .PHONY: redis
 redis:
 	sudo apt-get update
@@ -130,6 +126,10 @@ asdf_elixir: asdf
 asdf_ruby: asdf
 	asdf plugin-list | grep ruby > /dev/null || asdf plugin add ruby
 
+.PHONY: asdf_postgres
+asdf_postgres: asdf
+	asdf plugin-list | grep postgres > /dev/null || asdf plugin add postgres
+
 .PHONY: erlang
 erlang: asdf_erlang
 	asdf install erlang $(ERLANG_VER)
@@ -144,6 +144,11 @@ elixir: asdf_elixir erlang
 ruby: asdf_ruby
 	asdf install ruby $(RUBY_VER)
 	asdf global ruby $(RUBY_VER)
+
+.PHONY: postgres
+postgres: asdf_postgres
+	asdf install postgres $(POSTGRES_VER)
+	asdf global postgres $(PSOTGRES_VER)
 
 .PHONY: python
 python:
