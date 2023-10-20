@@ -2,6 +2,7 @@
 .*.swp
 .DS_Store
 .elixir_ls/
+.lexical/
 .vscode/
 .envrc
 .mypy_cache/

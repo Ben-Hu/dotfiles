@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 case $- in
-  *i*) ;;
-    *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -32,22 +32,22 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-  xterm-color|*-256color) color_prompt=yes;;
+xterm-color | *-256color) color_prompt=yes ;;
 esac
 
 if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
+  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+  else
+    color_prompt=
+  fi
 fi
 
 prompt_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/' -e 's/ //'
+  git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/' -e 's/ //'
 }
 
 if [ "$color_prompt" = yes ]; then
@@ -59,11 +59,10 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+xterm* | rxvt*)
   PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
   ;;
-*)
-  ;;
+*) ;;
 esac
 
 # colored GCC warnings and errors
@@ -84,7 +83,7 @@ fi
 [ -f ~/.git-completion.bash ] && . ~/.git-completion.bash
 
 # ssh
-if [ -z "$SSH_AUTH_SOCK" ] ; then
+if [ -z "$SSH_AUTH_SOCK" ]; then
   eval "$(ssh-agent -s)"
   ssh-add
 fi
@@ -114,7 +113,7 @@ fi
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-if hash pyenv 2> /dev/null; then
+if hash pyenv 2>/dev/null; then
   eval "$(pyenv init -)"
 fi
 
@@ -122,7 +121,7 @@ fi
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 # direnv
-if hash direnv 2> /dev/null; then
+if hash direnv 2>/dev/null; then
   eval "$(direnv hook bash)"
 fi
 
@@ -138,8 +137,7 @@ export PGUSER=postgres
 export PGDATABASE=postgres
 
 terraform() {
-  if [ "$1" = "fmt" ]
-  then
+  if [ "$1" = "fmt" ]; then
     shift
     command terraform fmt --recursive "$@"
   else
@@ -147,9 +145,17 @@ terraform() {
   fi
 }
 
+yarn() {
+  if [ "$1" = "ci" ]; then
+    shift
+    command yarn install --frozen-lockfile "$@"
+  else
+    command yarn "$@"
+  fi
+}
+
 git() {
-  if [ "$1" = "pou" ]
-  then
+  if [ "$1" = "pou" ]; then
     shift
     command git push --set-upstream origin $(git symbolic-ref --short HEAD) "$@"
   else
@@ -162,7 +168,7 @@ fedit() {
   editor=$1
   target=$(
     fzf --height 100% --layout reverse --info inline --border \
-    --preview 'head -100 {}' --preview-window right:100:border
+      --preview 'head -100 {}' --preview-window right:100:border
   ) || return
   $editor $target
 }
@@ -171,9 +177,10 @@ fco() {
   local branches target
   branches=$(
     git branch | grep -v HEAD | sed "s/.* //" | sed "s#remotes/[^/]*/##" | sort -u |
-    awk '{print $1}'
+      awk '{print $1}'
   ) || return
-  target=$(echo "$branches" | fzf --border --no-hscroll --reverse --ansi +m -d "\t" -q "$*"
+  target=$(
+    echo "$branches" | fzf --border --no-hscroll --reverse --ansi +m -d "\t" -q "$*"
   ) || return
   git ch $target
 }
@@ -182,9 +189,10 @@ fbrd() {
   local branches target
   branches=$(
     git branch | grep -v HEAD | sed "s/.* //" | sed "s#remotes/[^/]*/##" | sort -u |
-    awk '{print $1}'
+      awk '{print $1}'
   ) || return
-  target=$(echo "$branches" | fzf --border --no-hscroll --reverse --ansi +m -d "\t" -q "$*"
+  target=$(
+    echo "$branches" | fzf --border --no-hscroll --reverse --ansi +m -d "\t" -q "$*"
   ) || return
   git branch -d $target
 }
@@ -224,10 +232,10 @@ trm() {
 }
 
 fgl() {
-  git rev-parse HEAD > /dev/null 2>&1 || return
+  git rev-parse HEAD >/dev/null 2>&1 || return
   git log --date=short \
-  --format="%C(blue)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
-  fzf --ansi --no-sort --reverse --multi --border \
-  --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | head -300' |
-  grep -o "[a-f0-9]\{7,\}"
+    --format="%C(blue)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
+    fzf --ansi --no-sort --reverse --multi --border \
+      --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | head -300' |
+    grep -o "[a-f0-9]\{7,\}"
 }
