@@ -37,3 +37,7 @@ Capslock & XButton2::Send #^{Right}
 Capslock & F11::Send #{Tab}
 
 Capslock::return
+
+Pause::
+    SetCapsLockState, % (GetKeyState("CapsLock", "T") ? "Off" : "On")
+return

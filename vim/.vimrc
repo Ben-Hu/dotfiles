@@ -162,4 +162,3 @@ set term=xterm
 "hyper/#1037
 set t_RV=
 
-execute pathogen#infect()

@@ -5,24 +5,24 @@ DIR := $(shell pwd)
 
 ASDF_ROOT := ${HOME}/.asdf
 
-ERLANG_VER := 26.0.2
-ELIXIR_VER := 1.15.6-otp-26
+ERLANG_VER := 28.1
+ELIXIR_VER := 1.18.4-otp-28
 
 PYENV_ROOT := ${HOME}/.pyenv
-PYTHON_VER := 3.11.6
+PYTHON_VER := 3.13.7
 
 NVM_ROOT := ${HOME}/.nvm
-NODE_VER := v18.18.1
+NODE_VER := v24.8.0
 
 GVM_ROOT := ${HOME}/.gvm
-GO_VER := go1.21.3
+GO_VER := go1.25.1
 
 TERRAFORM_ROOT := ${HOME}/.terraform
-TERRAFORM_VER := 1.6.1
+TERRAFORM_VER := 1.13.3
 
 RUBY_VER := 3.0.2
 
-POSTGRES_VER := 16.0
+POSTGRES_VER := 17.6
 
 .PHONY: help
 help: ## Display this message
@@ -45,7 +45,8 @@ init:
 	ln -fs $(DIR)/git/.gitignore ${HOME}/.gitignore
 	mkdir -p ${HOME}/.psql_history && ln -fs $(DIR)/psql/.psqlrc ${HOME}/.psqlrc
 	ln -fs $(DIR)/iex/.iex.exs ${HOME}/.iex.exs
-	ln -fsT $(DIR)/bin ${HOME}/.bin
+	ln -fs $(DIR)/karabiner/karabiner.json ${HOME}/.config/karabiner/karabiner.json
+	ln -fs $(DIR)/bin ${HOME}/.bin
 	curl -fLSs -o ${HOME}/.git-completion.bash \
 	https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 

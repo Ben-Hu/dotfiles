@@ -39,6 +39,8 @@ fo = fetch origin
 po = push origin
 s = status
 l = log
+mr = push -u origin HEAD
+mrf = push -u origin +HEAD
 
 [credential]
 helper = cache
